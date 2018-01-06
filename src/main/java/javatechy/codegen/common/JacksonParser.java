@@ -5,9 +5,10 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
-import javatechy.codegen.execption.TicketingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import javatechy.codegen.exception.TicketingException;
 
 public class JacksonParser {
     private static Logger logger = Logger.getLogger(JacksonParser.class);

@@ -26,9 +26,9 @@ public class SwaggerConfig {
     }
 
     private ApiInfo apiInfo() {
-        Contact contact = new Contact("Deepak Kumar", "", "deepak.kumar@fabhotels.com");
+        Contact contact = new Contact("Deepak Kumar", "", "deepak.kumar.iet@gmail.com");
 
-        ApiInfo apiInfo = new ApiInfo("Ticketing Micro Service", "Ticketing Service by Fab", "V1.0", "https://www.fabhotels.com/terms-conditions", contact, "Fabhotels Internal License", "https://www.fabhotels.com/privacy-policy");
+        ApiInfo apiInfo = new ApiInfo("Spring Boot Code Generator by Javatechy", "Code generator", "V1.0", "https://www.gogle.com/terms-conditions", contact, "Javatechy MIT License", "https://www.mit.com/privacy-policy");
 
         return apiInfo;
     }

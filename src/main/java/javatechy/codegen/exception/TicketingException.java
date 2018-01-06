@@ -1,4 +1,4 @@
-package javatechy.codegen.execption;
+package javatechy.codegen.exception;
 
 import org.apache.log4j.Logger;
 

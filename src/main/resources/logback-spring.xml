@@ -10,11 +10,11 @@
 
 	<appender name="request"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>${logs.dir}/ticketing.log</file>
+		<file>${logs.dir}/codegen.log</file>
 		<append>true</append>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<!-- <fileNamePattern>${logs.dir}/application.%d{yyyy-MM-dd}.%i.log</fileNamePattern> -->
-			<fileNamePattern>${logs.dir}/ticketing.%d{yyyy-MM-dd}.%i.log</fileNamePattern> 
+			<fileNamePattern>${logs.dir}/codegen.%d{yyyy-MM-dd}.%i.log</fileNamePattern> 
 			 
 			<timeBasedFileNamingAndTriggeringPolicy
 				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
