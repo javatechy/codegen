@@ -1,5 +1,7 @@
 package javatechy.codegen.controller;
 
+import java.io.IOException;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -28,7 +30,7 @@ public class CodeGenController {
 
     @ApiOperation(value = "Create a project")
     @PostMapping(value = "/create", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Response createProject(@RequestBody Request request) {
+    public Response createProject(@RequestBody Request request) throws IOException {
         logger.info("Recieved Request => " + request);
         projectService.createProject(request);
         return null;
