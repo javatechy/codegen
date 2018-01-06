@@ -8,7 +8,16 @@ public class Properties {
     private String springVerison;
     private Boolean isConstantFile;
     private Boolean isGlobalExceptionEnabled;
-    private String isLombokEnabled;
+    private Boolean isLombokEnabled;
+    private Boolean isActuatorEnabled;
+
+    public Boolean getIsActuatorEnabled() {
+        return isActuatorEnabled;
+    }
+
+    public void setIsActuatorEnabled(Boolean isActuatorEnabled) {
+        this.isActuatorEnabled = isActuatorEnabled;
+    }
 
     public String getLanguage() {
         return language;
@@ -42,11 +51,11 @@ public class Properties {
         this.isGlobalExceptionEnabled = isGlobalExceptionEnabled;
     }
 
-    public String getIsLombokEnabled() {
+    public Boolean getIsLombokEnabled() {
         return isLombokEnabled;
     }
 
-    public void setIsLombokEnabled(String isLombokEnabled) {
+    public void setIsLombokEnabled(Boolean isLombokEnabled) {
         this.isLombokEnabled = isLombokEnabled;
     }
 

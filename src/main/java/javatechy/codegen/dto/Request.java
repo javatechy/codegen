@@ -8,6 +8,7 @@ public class Request {
     private String name;
     private String groupId;
     private String artifactId;
+    private String description;
     private List<Jar> jars = null;
     private List<Controller> controllers = null;
     private Swagger swagger;
@@ -16,6 +17,15 @@ public class Request {
     private List<Entity> entities = null;
     private Logging logging;
     private Deployment deployment;
+
+    
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public String getName() {
         return name;
