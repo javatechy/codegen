@@ -1,9 +1,7 @@
 
 package javatechy.codegen.dto;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Request {
 
@@ -18,7 +16,6 @@ public class Request {
     private List<Entity> entities = null;
     private Logging logging;
     private Deployment deployment;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public String getName() {
         return name;
@@ -106,14 +103,6 @@ public class Request {
 
     public void setDeployment(Deployment deployment) {
         this.deployment = deployment;
-    }
-
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
     }
 
 }

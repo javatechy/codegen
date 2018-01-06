@@ -1,8 +1,6 @@
 
 package javatechy.codegen.dto;
 
-import java.util.HashMap;
-import java.util.Map;
 
 public class Field {
 
@@ -11,7 +9,6 @@ public class Field {
     private String type;
     private Boolean isUnique;
     private Boolean isNullable;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public String getName() {
         return name;
@@ -51,14 +48,6 @@ public class Field {
 
     public void setIsNullable(Boolean isNullable) {
         this.isNullable = isNullable;
-    }
-
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
     }
 
 }

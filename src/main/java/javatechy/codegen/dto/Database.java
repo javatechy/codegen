@@ -1,8 +1,6 @@
 
 package javatechy.codegen.dto;
 
-import java.util.HashMap;
-import java.util.Map;
 
 public class Database {
 
@@ -10,7 +8,6 @@ public class Database {
     private String databaseType;
     private String userName;
     private String password;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public Boolean getIsDatabaseEnabled() {
         return isDatabaseEnabled;
@@ -42,14 +39,6 @@ public class Database {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
     }
 
 }

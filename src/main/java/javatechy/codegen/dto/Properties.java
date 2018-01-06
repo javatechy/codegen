@@ -1,8 +1,6 @@
 
 package javatechy.codegen.dto;
 
-import java.util.HashMap;
-import java.util.Map;
 
 public class Properties {
 
@@ -11,7 +9,6 @@ public class Properties {
     private Boolean isConstantFile;
     private Boolean isGlobalExceptionEnabled;
     private String isLombokEnabled;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public String getLanguage() {
         return language;
@@ -51,14 +48,6 @@ public class Properties {
 
     public void setIsLombokEnabled(String isLombokEnabled) {
         this.isLombokEnabled = isLombokEnabled;
-    }
-
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
     }
 
 }
