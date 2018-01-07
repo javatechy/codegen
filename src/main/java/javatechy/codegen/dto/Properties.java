@@ -9,11 +9,20 @@ public class Properties {
     private String description;
     private String applicationClassName;
     private String language;
+    private String developerName;
     private String springVerison;
     private Boolean isConstantFile;
     private Boolean isGlobalExceptionEnabled;
     private Boolean isLombokEnabled;
     private Boolean isActuatorEnabled;
+    
+    public String getDeveloperName() {
+        return developerName;
+    }
+
+    public void setDeveloperName(String developerName) {
+        this.developerName = developerName;
+    }
 
     public String getApplicationClassName() {
         return applicationClassName;
