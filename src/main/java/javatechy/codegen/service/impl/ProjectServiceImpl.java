@@ -1,30 +1,38 @@
 package javatechy.codegen.service.impl;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javatechy.codegen.common.Common;
+import javatechy.codegen.common.JacksonParser;
 import javatechy.codegen.controller.CodeGenController;
+import javatechy.codegen.dto.Properties;
 import javatechy.codegen.dto.Request;
+import javatechy.codegen.service.FileUtilService;
 import javatechy.codegen.service.ProjectService;
 
 @Service
 public class ProjectServiceImpl implements ProjectService {
 
     private Logger logger = Logger.getLogger(CodeGenController.class);
-    private ClassLoader classLoader = getClass().getClassLoader();
-    private String projectLocation = "/Users/deepak/Desktop";
+    public static final String projectLocation = "/Users/deepak/Desktop/project";
+    public static final String pomLocation = "template/pom.xml";
+    public static String applicationClassLocation = "template/DemoApplication.java";
+    public static final String srcMainJavaLoc = projectLocation + "/src/main/java";
+    public static final String resourceLoc = projectLocation + "/src/main/resources";
+    public static final String applicationProp = "template/application.properties";
+    public static String applicationClassName;
+    public static String javaCodeLoc;
 
-    private final String APPLICATION_PROPS = "template/application.properties";
+    @Autowired
+    private FileUtilService fileUtilService;
 
-    @Override
-    public void createProject(Request request) throws IOException {
-        makeEmptyProject(request);
+    /**
+     *  makeEmptyProject(request);
         makeApplicationProperty();
         makePomXml();
         addDependencies();
@@ -32,29 +40,46 @@ public class ProjectServiceImpl implements ProjectService {
         addDatabaseProps();
         addDatabaseDto();
         addLogging();
-        String fileName = getFileName(APPLICATION_PROPS);
-        logger.info("fileName => " + fileName);
-        String data = new String(Files.readAllBytes(Paths.get(fileName)), StandardCharsets.UTF_8);
-        logger.info("Data => " + data);
+     */
+    @Override
+    public void createProject(Request request) throws IOException {
+        Properties properties = request.getProperties();
+        applicationClassName = Common.toCamelCase(request.getProperties()
+            .getGroupId()) + "Application";
+        logger.info("Application Class Name => " + applicationClassName);
+        properties.setApplicationClassName(applicationClassName);
+        this.makeEmptyProject(request);
+        String applicationPropData = fileUtilService.getDataFromClassLoader(applicationProp);
+        this.makePomXml(request);
     }
 
+    /**
+     *  mkdir src/main/java && src/main/resources
+     *  add pom.xml in project folder && add README.md in project folder &&  add .gitignore in the project folder
+     */
     private void makeEmptyProject(Request request) throws IOException {
-        // TODO make empty project
-        String artifactId = request.getArtifactId();
-        String groupId = request.getGroupId();
-        String name = request.getName();
-        String description = request.getDescription();
-        Path path = Paths.get((projectLocation + "." + artifactId + "." + groupId).replace(".", "/"));
-        logger.info("File Location=> " + path.toString());
-        Files.createDirectories(path);
+        logger.info("javaCodeLoc => " + javaCodeLoc);
+        javaCodeLoc = getJavaCodeLoc(request);
+        logger.info("javaCodeLoc => " + javaCodeLoc);
+        fileUtilService.createDirectories(srcMainJavaLoc);
+        fileUtilService.createDirectories(resourceLoc);
+        fileUtilService.createDirectories(javaCodeLoc);
+
+    }
+
+    private String getJavaCodeLoc(Request request) {
+        return (srcMainJavaLoc + "." + request.getProperties()
+            .getArtifactId() + "."
+            + request.getProperties()
+                .getGroupId()).replaceAll("\\.", "/");
     }
 
     private void addLogging() {
-        // TODO logging
+
     }
 
     private void addDatabaseDto() {
-        // TODO Auto-generated method stub
+
     }
 
     private void addDatabaseProps() {
@@ -69,8 +94,14 @@ public class ProjectServiceImpl implements ProjectService {
         // TODO add deps
     }
 
-    private void makePomXml() {
-        // TODO make pom.xml
+    private void makePomXml(Request request) throws IOException {
+        String pomXmlData = fileUtilService.getDataFromClassLoader(pomLocation);
+        Map<String, String> objectMapString = JacksonParser.jacksonObjectToMap(request.getProperties());
+        pomXmlData = Common.replaceParams(pomXmlData, objectMapString);
+        fileUtilService.writeDataToFile(pomXmlData, projectLocation + "/" + "pom.xml");
+        String applicationClassData = fileUtilService.getDataFromClassLoader(applicationClassLocation);
+        applicationClassData = Common.replaceParams(applicationClassData, objectMapString);
+        fileUtilService.writeDataToFile(applicationClassData, javaCodeLoc + "/" + applicationClassName + ".java");
     }
 
     private void makeApplicationProperty() {
@@ -78,9 +109,4 @@ public class ProjectServiceImpl implements ProjectService {
 
     }
 
-    private String getFileName(String APPLICATION_PROPS) {
-        String fileName = classLoader.getResource(APPLICATION_PROPS)
-            .getFile();
-        return fileName;
-    }
 }

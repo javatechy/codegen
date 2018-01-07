@@ -22,8 +22,8 @@ import javatechy.codegen.dto.Response;
 public class ExceptionInterceptor {
     public static Logger logger = Logger.getLogger(ExceptionInterceptor.class);
 
-    @ExceptionHandler(value = TicketingException.class)
-    public Response authenticationFailure(HttpServletRequest request, HttpServletResponse response, TicketingException ex) {
+    @ExceptionHandler(value = CodeGenException.class)
+    public Response authenticationFailure(HttpServletRequest request, HttpServletResponse response, CodeGenException ex) {
         logger.info("HotelierException Occured with code => " + ex.getMessage());
         return buildErrorResponse(ex.getMessage());
     }

@@ -1,15 +1,59 @@
 
 package javatechy.codegen.dto;
 
-
 public class Properties {
 
+    private String name;
+    private String groupId;
+    private String artifactId;
+    private String description;
+    private String applicationClassName;
     private String language;
     private String springVerison;
     private Boolean isConstantFile;
     private Boolean isGlobalExceptionEnabled;
     private Boolean isLombokEnabled;
     private Boolean isActuatorEnabled;
+
+    public String getApplicationClassName() {
+        return applicationClassName;
+    }
+
+    public void setApplicationClassName(String applicationClassName) {
+        this.applicationClassName = applicationClassName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(String groupId) {
+        this.groupId = groupId;
+    }
+
+    public String getArtifactId() {
+        return artifactId;
+    }
+
+    public void setArtifactId(String artifactId) {
+        this.artifactId = artifactId;
+    }
 
     public Boolean getIsActuatorEnabled() {
         return isActuatorEnabled;
