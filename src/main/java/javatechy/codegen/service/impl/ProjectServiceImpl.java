@@ -64,7 +64,11 @@ public class ProjectServiceImpl implements ProjectService {
         fileUtilService.createDirectories(srcMainJavaLoc);
         fileUtilService.createDirectories(resourceLoc);
         fileUtilService.createDirectories(javaCodeLoc);
-
+        fileUtilService.createDirectories(javaCodeLoc+"/service/impl");
+        fileUtilService.createDirectories(javaCodeLoc+"/controller");
+        fileUtilService.createDirectories(javaCodeLoc+"/exception");
+        fileUtilService.createDirectories(javaCodeLoc+"/dao");
+        fileUtilService.createDirectories(javaCodeLoc+"/entity");
     }
 
     private String getJavaCodeLoc(Request request) {
