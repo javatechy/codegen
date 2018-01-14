@@ -1,4 +1,4 @@
-package ${artifactId}.${groupId};
+package ${groupId}.${artifactId}.exception;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-
 
 import javatechy.codegen.common.Constant;
 import javatechy.codegen.config.Config;
@@ -27,7 +26,6 @@ public class ExceptionInterceptor {
         logger.info("Exception Occured with code => " + ex.getMessage());
         return buildErrorResponse(ex.getMessage());
     }
-
 
     @ExceptionHandler(value = Exception.class)
     public Response parentException(HttpServletRequest httpRequest, HttpServletResponse response, Exception ex) {

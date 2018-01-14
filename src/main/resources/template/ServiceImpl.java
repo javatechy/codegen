@@ -1,4 +1,4 @@
-package ${artifactId}.${groupId};
+package ${groupId}.${artifactId}.service.impl;
 
 /**
  * 

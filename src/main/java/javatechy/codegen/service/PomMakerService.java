@@ -6,5 +6,7 @@ import javatechy.codegen.dto.Request;
 
 public interface PomMakerService {
 
-    void createProject(Request request) throws IOException;
+    void createPomXml(Request request) throws IOException;
+
+    void addDependencies(Request request);
 }
