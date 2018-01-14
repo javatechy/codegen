@@ -1,7 +1,5 @@
 package ${groupId}.${artifactId}.controller;
 
-package javatechy.codegen.controller;
-
 import java.io.IOException;
 
 import org.apache.log4j.Logger;
