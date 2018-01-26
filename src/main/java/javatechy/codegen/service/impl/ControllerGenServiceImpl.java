@@ -27,8 +27,6 @@ public class ControllerGenServiceImpl implements ControllerGenService {
             String controllerClassData = fileUtilService.getDataFromClassLoader(ProjectServiceImpl.controllerClassLocation);
             controllerClassData = Common.replaceParams(controllerClassData, "name", className);
             controllerClassData = Common.replaceParams(controllerClassData, "docsComment", docsComment);
-            controllerClassData = Common.replaceParams(controllerClassData, "docsComment", docsComment);
-            
             fileUtilService.writeDataToFile(controllerClassData, ProjectServiceImpl.javaCodeLoc + "/controllers/" + className + ".java");
         }
     }

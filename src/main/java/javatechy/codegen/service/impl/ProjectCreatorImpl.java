@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import javatechy.codegen.common.Common;
 import javatechy.codegen.common.JacksonParser;
@@ -13,6 +14,7 @@ import javatechy.codegen.dto.Request;
 import javatechy.codegen.service.FileUtilService;
 import javatechy.codegen.service.ProjectCreator;
 
+@Service
 public class ProjectCreatorImpl implements ProjectCreator {
 
     private Logger logger = Logger.getLogger(ProjectCreatorImpl.class);

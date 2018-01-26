@@ -6,7 +6,8 @@ public class Response {
     private String code;
     private String error;
 
-    public Response(String failure) {
+    public Response(String status) {
+        this.status = status;
         // TODO Auto-generated constructor stub
     }
 
