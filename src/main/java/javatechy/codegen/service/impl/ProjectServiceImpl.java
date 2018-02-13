@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 
 import javatechy.codegen.controller.CodeGenController;
 import javatechy.codegen.dto.Request;
+import javatechy.codegen.service.AppPropertiesService;
 import javatechy.codegen.service.ControllerGenService;
 import javatechy.codegen.service.DatabaseService;
-import javatechy.codegen.service.FileUtilService;
 import javatechy.codegen.service.PomMakerService;
 import javatechy.codegen.service.ProjectCreator;
 import javatechy.codegen.service.ProjectService;
@@ -30,7 +30,7 @@ public class ProjectServiceImpl implements ProjectService {
     public static String javaCodeLoc;
 
     @Autowired
-    private FileUtilService fileUtilService;
+    private AppPropertiesService appPropertiesService;
 
     @Autowired
     private ProjectCreator projectCreator;
@@ -44,31 +44,18 @@ public class ProjectServiceImpl implements ProjectService {
     @Autowired
     private ControllerGenService controllerGenService;
 
-    /**
-        addMainApplicaitonJava();
-        addLogging();
-     */
     @Override
     public void createProject(Request request) throws IOException {
         logger.info("== Creating empty project ==");
-
         projectCreator.initiliaze(request);
         projectCreator.generateEmptyProject(request);
         pomMakerService.createPomXml(request);
         projectCreator.generateMainClass(request);
-
-        this.makeApplicationProperty();
-
+        appPropertiesService.generateApplicationProperties(request);
         controllerGenService.generateControllers(request);
-
         pomMakerService.addDependencies(request);
-
         datbaseService.addDatabaseProps(request);
         datbaseService.addDatabaseDto(request);
-    }
-
-    private void makeApplicationProperty() throws IOException {
-        String applicationPropData = fileUtilService.getDataFromClassLoader(applicationProp);
     }
 
 }

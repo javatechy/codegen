@@ -9,13 +9,22 @@ public class Properties {
     private String description;
     private String applicationClassName;
     private String language;
+    private String applicationPort;
     private String developerName;
     private String springVerison;
     private Boolean isConstantFile;
     private Boolean isGlobalExceptionEnabled;
     private Boolean isLombokEnabled;
     private Boolean isActuatorEnabled;
-    
+
+    public String getApplicationPort() {
+        return applicationPort;
+    }
+
+    public void setApplicationPort(String applicationPort) {
+        this.applicationPort = applicationPort;
+    }
+
     public String getDeveloperName() {
         return developerName;
     }
