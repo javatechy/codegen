@@ -15,10 +15,9 @@ public class JacksonParser {
 
     private static ObjectMapper mapper = new ObjectMapper();
 
-    public static void jacksonObjectToMap(String jsonStr) {
-        Map<String, Object> map = null;
+    public static Map<String, Object> jacksonObjectToMap(String jsonStr) {
         try {
-            map = mapper.readValue(jsonStr, new TypeReference<Map<String, String>>() {
+            return mapper.readValue(jsonStr, new TypeReference<Map<String, String>>() {
             });
         } catch (IOException e) {
             logger.error("Error while converting string to json" + jsonStr, e);
